@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
-import { ProductListService } from 'src/app/services/product-list.service';
+// import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,6 +10,6 @@ import { ProductListService } from 'src/app/services/product-list.service';
 export class ProductListComponent {
   @Input() products: Product[] = [];
 
-  constructor(private readonly productListService:ProductListService){}
+  // constructor(private readonly productListService:ProductListService){}
 
 }
