@@ -7,5 +7,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PaginationComponent {
   @Input() resultsCount:number = 0;
-  @Output() recordsPerPageChange: EventEmitter<number> = new EventEmitter<number>();
+  @Input() recordsPerPage:number = 5;
+  @Output() recordsPerPageChange = new EventEmitter<number>();
+
+  availableRecordsPerPage: number[] = [5, 10, 20];
+
+  onRecordsPerPageChange(event: any) {
+    const selectedValue = event?.target?.value;
+    if (selectedValue) {
+      this.recordsPerPageChange.emit(+selectedValue);
+    }
+  }
 }

@@ -5,18 +5,33 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthorIdInterceptor } from './interceptors/author-id.interceptor';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProductSearchComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorIdInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

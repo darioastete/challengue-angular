@@ -1,7 +1,4 @@
-<p>pagination works!</p>
 <p>{{ resultsCount }} resultados</p>
-<!-- <select (change)="recordsPerPageChange.emit($event.target.value)"> -->
-<!--   <option value="5">5</option> -->
-<!--   <option value="10">10</option> -->
-<!--   <option value="20">20</option> -->
-<!-- </select> -->
+<select (change)="onRecordsPerPageChange($event)">
+  <option *ngFor="let option of availableRecordsPerPage" [value]="option">{{ option }}</option>
+</select>

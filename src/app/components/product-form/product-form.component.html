@@ -1,0 +1,68 @@
+<!-- src/app/components/product-form/product-form.component.html -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="id">Id:</label>
+    <input type="text" id="id" formControlName="id" />
+    <div *ngIf="shouldShowError('id', 'required')">
+      El Id es requerido.
+    </div>
+    <div *ngIf="shouldShowError('id', 'minlength') || shouldShowError('id', 'maxlength')">
+      El Id debe tener entre 3 y 10 caracteres.
+    </div>
+  </div>
+
+  <div>
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="shouldShowError('name', 'required')">
+      El nombre es requerido.
+    </div>
+    <div *ngIf="shouldShowError('name', 'minlength') || shouldShowError('name', 'maxlength')">
+      El nombre debe tener entre 5 y 100 caracteres.
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Descripción:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="shouldShowError('description', 'required')">
+      La descripción es requerida.
+    </div>
+    <div *ngIf="shouldShowError('description', 'minlength') || shouldShowError('description', 'maxlength')">
+      La descripción debe tener entre 10 y 200 caracteres.
+    </div>
+  </div>
+
+  <div>
+    <label for="logo">Logo:</label>
+    <input type="text" id="logo" formControlName="logo" />
+    <div *ngIf="shouldShowError('logo', 'required')">
+      El logo es requerido.
+    </div>
+  </div>
+
+  <div>
+    <label for="releaseDate">Fecha de Liberación:</label>
+    <input type="date" id="releaseDate" formControlName="releaseDate" />
+    <div *ngIf="shouldShowError('releaseDate', 'required')">
+      La Fecha de Liberación es requerida.
+    </div>
+    <div *ngIf="shouldShowError('releaseDate', 'invalidReleaseDate')">
+      La Fecha de Liberación debe ser igual o mayor a la fecha actual.
+    </div>
+  </div>
+
+  <div>
+    <label for="reviewDate">Fecha de Revisión:</label>
+    <input type="date" id="reviewDate" formControlName="reviewDate" />
+    <div *ngIf="shouldShowError('reviewDate', 'required')">
+      La Fecha de Revisión es requerida.
+    </div>
+    <div *ngIf="shouldShowError('reviewDate', 'invalidReviewDate')">
+      La Fecha de Revisión debe ser exactamente un año posterior a la fecha de liberación.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!productForm.valid">Agregar</button>
+</form>
+
