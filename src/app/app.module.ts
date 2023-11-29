@@ -10,6 +10,12 @@ import { AuthorIdInterceptor } from './interceptors/author-id.interceptor';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
+import { ListProductComponent } from './pages/list-product/list-product.component';
+import { DatePipe } from '@angular/common';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { ModalConfirmationComponent } from './components/modal-confirmation/modal-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,12 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     ProductListComponent,
     PaginationComponent,
     ProductSearchComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    CreateProductComponent,
+    EditProductComponent,
+    ListProductComponent,
+    CustomDatePipe,
+    ModalConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +41,8 @@ import { ProductFormComponent } from './components/product-form/product-form.com
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorIdInterceptor,
       multi:true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

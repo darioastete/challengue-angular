@@ -2,7 +2,7 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="id">Id:</label>
-    <input type="text" id="id" formControlName="id" />
+    <input type="text" id="id" formControlName="id" [readonly]="initialValues"/>
     <div *ngIf="shouldShowError('id', 'required')">
       El Id es requerido.
     </div>
@@ -67,8 +67,7 @@
     </div>
   </div>
 
-  <button type="button" [disabled]="!canResetForm()" (click)="resetForm()">Reiniciar</button>
+  <button type="button" *ngIf="!initialValues" [disabled]="!canResetForm()" (click)="resetForm()">Reiniciar</button>
   <button type="submit" [disabled]="!productForm.valid">Enviar</button>
 
 </form>
-

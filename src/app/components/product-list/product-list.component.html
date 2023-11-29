@@ -1,4 +1,4 @@
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Logo</th>
@@ -14,13 +14,13 @@
       <td><img [src]="product.logo" alt=""></td>
       <td>{{ product.name }}</td>
       <td>{{ product.description }}</td>
-      <td>{{ product.date_release | date: 'YYYY/MM/dd'}}</td>
-      <td>{{ product.date_revision | date: 'YYYY/MM/dd' }}</td>
-      <td>:</td>
+      <td>{{ product.date_release | customDate}}</td>
+      <td>{{ product.date_revision | customDate}}</td>
+      <td>
+        <button type="button" (click)="delete(product.id)">delete</button>
+        <button type="button" (click)="edit(product)">edit</button>
+      </td>
     </tr>
   </tbody>
 </table>
-<!-- <div *ngFor="let product of products"> -->
-<!--   <div>name: {{ product.name }}</div> -->
-<!--   <div>description: {{ product.description }}</div> -->
-<!-- </div> -->
+<app-modal-confirmation></app-modal-confirmation>

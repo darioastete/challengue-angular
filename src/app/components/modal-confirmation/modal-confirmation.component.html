@@ -1,0 +1,12 @@
+<div class="modal-overlay" *ngIf="isModalOpen | async">
+  <div class="modal">
+    <div class="modal-content">
+      <h2>Eliminar Producto</h2>
+      <p>¿Estás seguro de que deseas eliminar este producto?</p>
+      <div class="modal-actions">
+        <button (click)="cancel()">Cancelar</button>
+        <button (click)="deleteProduct()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

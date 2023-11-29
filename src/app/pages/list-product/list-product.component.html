@@ -1,0 +1,5 @@
+<div>
+  <app-product-search (searchQuery)="onSearch($event)"></app-product-search>
+  <app-product-list [products]="products"></app-product-list>
+  <app-pagination [resultsCount]="resultCount" (recordsPerPageChange)="onRecordsPerPageChange($event)"></app-pagination>
+</div>

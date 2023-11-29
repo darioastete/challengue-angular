@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Product } from '../models/product.model';
 import { environment } from './../../environments/environment'
@@ -8,6 +8,7 @@ import { environment } from './../../environments/environment'
   providedIn: 'root'
 })
 export class ProductListService {
+    productDeleted = new EventEmitter<void>();
 
   constructor(private readonly http:HttpClient) {
   }
@@ -30,8 +31,12 @@ export class ProductListService {
     })
   }
 
-  createProduct(product:Product): Observable<Product | null> {
+  createProduct(product:Product): Observable<Product> {
     return this.http.post<Product>(`${environment.apiUrl}/bp/products`, product);
+  }
+
+  deleteProduct(id:string) : Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/bp/products?id=${id}`)
   }
 
   verifyProductId(id: string): Observable<boolean> {
