@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PaginationComponent } from './pagination.component';
 
 describe('PaginationComponent', () => {
@@ -17,5 +16,21 @@ describe('PaginationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit recordsPerPageChange event on onRecordsPerPageChange', () => {
+    const selectedValue = '10';
+
+    jest.spyOn(component.recordsPerPageChange, 'emit');
+    component.onRecordsPerPageChange({ target: { value: selectedValue } });
+
+    expect(component.recordsPerPageChange.emit).toHaveBeenCalledWith(+selectedValue);
+  });
+
+  it('should not emit recordsPerPageChange event if no value is selected', () => {
+    jest.spyOn(component.recordsPerPageChange, 'emit');
+    component.onRecordsPerPageChange({ target: { value: null } });
+
+    expect(component.recordsPerPageChange.emit).not.toHaveBeenCalled();
   });
 });

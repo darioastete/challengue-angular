@@ -1,5 +1,6 @@
 <div>
   <app-product-search (searchQuery)="onSearch($event)"></app-product-search>
+  <button routerLink="/create-product">Agregar</button>
   <app-product-list [products]="products"></app-product-list>
   <app-pagination [resultsCount]="resultCount" (recordsPerPageChange)="onRecordsPerPageChange($event)"></app-pagination>
 </div>

@@ -1,7 +1,7 @@
-import { state } from '@angular/animations';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
+import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -12,8 +12,8 @@ export class EditProductComponent {
 
   product:Product | null = null;
   state:any;
-  constructor(private router:Router, private route:ActivatedRoute){
-    const state = this.router.getCurrentNavigation()?.extras.state as {productData : any};
+  constructor(private router:Router, private productListService:ProductListService){
+    const state = this.getCurrentNavigationExtras();
     if (state) {
       this.product = state.productData;
     }else {
@@ -22,9 +22,21 @@ export class EditProductComponent {
 
   }
 
-  ngOnInit():void {
-  }
   onEditProduct(product:Product){
-    console.log('EDITTTTTT',product);
+    this.productListService.editProduct(product).subscribe({
+      next: (value) => {
+        this.router.navigate(['/'])
+      }, error: (err) => {
+        console.log(err);
+
+      },
+    })
+  }
+
+  private getCurrentNavigationExtras(): { productData: any } | null {
+    if (this.router.getCurrentNavigation) {
+      return this.router.getCurrentNavigation()?.extras.state as { productData: any } | null;
+    }
+    return null;
   }
 }

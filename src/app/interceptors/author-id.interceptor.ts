@@ -10,9 +10,6 @@ import { environment } from "../../environments/environment";
 
 @Injectable()
 export class AuthorIdInterceptor implements HttpInterceptor {
-
-  constructor() {}
-
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const reqClone = request.clone({
       headers: request.headers.set('authorId', environment.authorId)

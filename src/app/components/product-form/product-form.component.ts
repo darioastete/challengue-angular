@@ -73,7 +73,6 @@ export class ProductFormComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
-
       this.sendProduct.emit(this.productForm.value);
       this.productForm.reset();
     }
@@ -110,7 +109,7 @@ export class ProductFormComponent {
   }
 
 
-  private validateProductId(control: AbstractControl): Observable<ValidationErrors | null> {
+  validateProductId(control: AbstractControl): Observable<ValidationErrors | null> {
     if (this.initialValues) {
       return of(null);
     }

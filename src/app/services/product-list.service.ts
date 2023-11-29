@@ -8,7 +8,7 @@ import { environment } from './../../environments/environment'
   providedIn: 'root'
 })
 export class ProductListService {
-    productDeleted = new EventEmitter<void>();
+  productDeleted = new EventEmitter<void>();
 
   constructor(private readonly http:HttpClient) {
   }
@@ -33,6 +33,10 @@ export class ProductListService {
 
   createProduct(product:Product): Observable<Product> {
     return this.http.post<Product>(`${environment.apiUrl}/bp/products`, product);
+  }
+
+  editProduct(product:Product):Observable<Product> {
+    return this.http.put<Product>(`${environment.apiUrl}/bp/products`, product)
   }
 
   deleteProduct(id:string) : Observable<void> {

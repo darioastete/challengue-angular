@@ -10,6 +10,8 @@ export class ProductSearchComponent {
 
   onSearch(event:any){
     const selectedValue = event?.target?.value;
-    this.searchQuery.emit(selectedValue);
+    if (selectedValue !== undefined) {
+      this.searchQuery.emit(selectedValue);
+    }
   }
 }

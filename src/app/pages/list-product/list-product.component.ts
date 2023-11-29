@@ -18,9 +18,11 @@ export class ListProductComponent {
   constructor (private readonly productListService:ProductListService){}
 
   ngOnInit():void{
-    this.productListService.productDeleted.subscribe(() => {
-      this.getProducts();
-    });
+    if (this.productListService.productDeleted) {
+      this.productListService.productDeleted.subscribe(() => {
+        this.getProducts();
+      });
+    }
     this.getProducts();
   }
 

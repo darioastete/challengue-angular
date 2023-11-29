@@ -1,0 +1,35 @@
+.form {
+  // display: flex;
+  gap: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width:  40%;
+  gap: 10px;
+
+  &__input {
+    border-radius: 7px;
+    padding: 10px 5px 0;
+  }
+  &__label {
+   font-weight: bold;
+  }
+  &__message {
+    color: red;
+  }
+
+}
+
+.wrap-btn {
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 50px;
+}

@@ -1,5 +1,4 @@
-<!-- src/app/components/product-form/product-form.component.html -->
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form">
   <div class="input-container">
     <label for="id">Id:</label>
     <input type="text" id="id" formControlName="id" [readonly]="initialValues"/>
@@ -16,19 +15,22 @@
   </div>
 
   <div class="input-container">
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" formControlName="name" />
-    <div *ngIf="shouldShowError('name', 'required')">
-      El nombre es requerido.
-    </div>
-    <div *ngIf="shouldShowError('name', 'minlength') || shouldShowError('name', 'maxlength')">
-      El nombre debe tener entre 5 y 100 caracteres.
-    </div>
-  </div>
+    <label for="description" class="input-container__label">Descripción:</label>
+    <textarea id="description" formControlName="description" class="input-container__input"></textarea>
+
+    <span *ngIf="shouldShowError('description', 'required')" class="input-container__message">
+      La descripción es requerida.
+    </span>
+
+    <span *ngIf="shouldShowError('description', 'minlength') || shouldShowError('description', 'maxlength')" class="input-container__message">
+      La descripción debe tener entre 10 y 200 caracteres.
+    </span>
+  
+  </div>
 
   <div class="input-container">
-    <label for="description">Descripción:</label>
-    <textarea id="description" formControlName="description"></textarea>
+    <label for="description" class="input-container__label">Descripción:</label>
+    <textarea id="description" formControlName="description" class="input-container__input"></textarea>
     <div *ngIf="shouldShowError('description', 'required')">
       La descripción es requerida.
     </div>
@@ -66,8 +68,8 @@
       La Fecha de Revisión debe ser exactamente un año posterior a la fecha de liberación.
     </div>
   </div>
-
-  <button type="button" *ngIf="!initialValues" [disabled]="!canResetForm()" (click)="resetForm()">Reiniciar</button>
-  <button type="submit" [disabled]="!productForm.valid">Enviar</button>
-
+  <div class="wrap-btn">
+    <button type="button" *ngIf="!initialValues" [disabled]="!canResetForm()" (click)="resetForm()">Reiniciar</button>
+    <button type="submit" [disabled]="!productForm.valid">Enviar</button>
+  </div>
 </form>
