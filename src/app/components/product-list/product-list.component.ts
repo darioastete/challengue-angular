@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
-import { ModalConfirmationService } from 'src/app/services/modal-confirmation.service';
+import { Router, NavigationExtras } from '@angular/router';
+import { ModalConfirmationService } from '../../services/modal-confirmation.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +11,8 @@ import { ModalConfirmationService } from 'src/app/services/modal-confirmation.se
 export class ProductListComponent {
   @Input() products: Product[] = [];
 
-  constructor(private router:Router, private modalService:ModalConfirmationService){}
+  constructor(private router:Router,
+    private modalService :ModalConfirmationService){}
 
   ngOnInit(){}
 

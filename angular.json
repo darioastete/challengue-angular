@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "challengue:build:production"
+              "buildTarget": "challengue:build:production"
             },
             "development": {
-              "browserTarget": "challengue:build:development"
+              "buildTarget": "challengue:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,11 +82,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "challengue:build"
+            "buildTarget": "challengue:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-devkit/build-angular:jest",
           "options": {
             "polyfills": [
               "zone.js",
