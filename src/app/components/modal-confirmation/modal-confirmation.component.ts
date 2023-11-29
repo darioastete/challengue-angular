@@ -31,13 +31,10 @@ export class ModalConfirmationComponent {
     this.productListService.deleteProduct(this.productId).subscribe({
       next: (_value)=> {
         this.productListService.productDeleted.emit();
-      }, error: (err) => {
-        console.log('hay error',err);
-      },complete: () =>{
+      }, error: (err) => {},complete: () =>{
         this.modalService.hideModal();
       },
     })
-    this.modalService.hideModal();
   }
 
 }

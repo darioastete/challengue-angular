@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { Product } from '../models/product.model';
 import { environment } from './../../environments/environment'
 
@@ -35,8 +35,8 @@ export class ProductListService {
     return this.http.post<Product>(`${environment.apiUrl}/bp/products`, product);
   }
 
-  deleteProduct(id:string) : Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}/bp/products?id=${id}`)
+  deleteProduct(id:string) : Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/bp/products?id=${id}`, {responseType:'text' as 'json'})
   }
 
   verifyProductId(id: string): Observable<boolean> {

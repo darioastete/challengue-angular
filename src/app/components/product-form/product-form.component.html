@@ -1,6 +1,6 @@
 <!-- src/app/components/product-form/product-form.component.html -->
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <div>
+  <div class="input-container">
     <label for="id">Id:</label>
     <input type="text" id="id" formControlName="id" [readonly]="initialValues"/>
     <div *ngIf="shouldShowError('id', 'required')">
@@ -15,7 +15,7 @@
 
   </div>
 
-  <div>
+  <div class="input-container">
     <label for="name">Nombre:</label>
     <input type="text" id="name" formControlName="name" />
     <div *ngIf="shouldShowError('name', 'required')">
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="input-container">
     <label for="description">Descripción:</label>
     <textarea id="description" formControlName="description"></textarea>
     <div *ngIf="shouldShowError('description', 'required')">
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="input-container">
     <label for="logo">Logo:</label>
     <input type="text" id="logo" formControlName="logo" />
     <div *ngIf="shouldShowError('logo', 'required')">
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="input-container">
     <label for="date_release">Fecha de Liberación:</label>
     <input type="date" id="date_release" formControlName="date_release" />
     <div *ngIf="shouldShowError('date_release', 'required')">
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="input-container">
     <label for="date_revision">Fecha de Revisión:</label>
     <input type="date" id="reviewDate" formControlName="date_revision" />
     <div *ngIf="shouldShowError('date_revision', 'required')">
