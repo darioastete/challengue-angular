@@ -9,7 +9,6 @@ import { ProductListService } from 'src/app/services/product-list.service';
   styleUrls: ['./list-product.component.scss']
 })
 export class ListProductComponent {
-  title = 'challengue';
   allProducts: Product[] = [];
   products: Product[] = [];
   recordsPerPage:number = 5;

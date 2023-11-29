@@ -8,5 +8,5 @@ import { ProductListService } from './services/product-list.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  title = 'Challengue';
 }

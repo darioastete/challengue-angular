@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { ModalConfirmationService } from 'src/app/services/modal-confirmation.service';
-// import { ProductListService } from 'src/app/services/product-list.service';
 
 @Component({
   selector: 'app-product-list',
