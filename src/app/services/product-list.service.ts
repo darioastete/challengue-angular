@@ -29,4 +29,13 @@ export class ProductListService {
       )
     })
   }
+
+  createProduct(product:Product): Observable<Product | null> {
+    return this.http.post<Product>(`${environment.apiUrl}/bp/products`, product);
+  }
+
+  verifyProductId(id: string): Observable<boolean> {
+    const url = `${environment.apiUrl}/bp/products/verification?id=${id}`;
+    return this.http.get<boolean>(url);
+  }
 }

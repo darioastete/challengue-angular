@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 import { ProductListService } from 'src/app/services/product-list.service';
+import { Observable, map, catchError, of} from 'rxjs';
 
 @Component({
   selector: 'app-product-form',
@@ -15,6 +16,25 @@ export class ProductFormComponent {
   constructor(private formBuilder:FormBuilder, private productList:ProductListService){
     this.productForm = this.buildProductForm();
   }
+
+
+  ngOnInit(){
+    this.productForm.get('date_release')?.valueChanges.subscribe(() => {
+      this.validateDateFields();
+    });
+  }
+
+  private validateDateFields(): void {
+    const dateReleaseControl = this.productForm.get('date_release');
+    const dateRevisionControl = this.productForm.get('date_revision');
+
+    dateReleaseControl?.setValidators([Validators.required, this.validateReleaseDate.bind(this)]);
+    dateRevisionControl?.setValidators([Validators.required, this.validateReviewDate.bind(this)]);
+
+    dateReleaseControl?.updateValueAndValidity();
+    dateRevisionControl?.updateValueAndValidity();
+  }
+
 
 
   validateReleaseDate(control: AbstractControl) {
@@ -36,16 +56,13 @@ export class ProductFormComponent {
       return null;
     }
 
-    reviewDate = new Date(control.value + 'T00:00:00');
-
-    const releaseDate = new Date(this.productForm.get('releaseDate')?.value + 'T00:00:00');
-
+    const releaseDate = new Date(this.productForm.get('date_release')!.value + 'T00:00:00');
     const oneYearAfterRelease = new Date(releaseDate);
     oneYearAfterRelease.setFullYear(releaseDate.getFullYear() + 1);
 
-    return reviewDate.getTime() === oneYearAfterRelease.getTime()
-      ? null
-      : { invalidReviewDate: true };
+    return reviewDate === oneYearAfterRelease.toISOString().split('T')[0]
+    ? null
+    : { invalidReviewDate: true };
   }
 
 
@@ -62,15 +79,36 @@ export class ProductFormComponent {
     return control?.invalid && (control?.dirty || control?.touched) && control?.hasError(errorType);
   }
 
+  resetForm() {
+    this.productForm.reset();
+  }
+
+  canResetForm() {
+    return Object.values(this.productForm.controls).some(control => control.dirty || control.touched);
+  }
+
 
   private buildProductForm(): FormGroup {
     return this.formBuilder.group({
-      id: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      id: ['', {
+        validators: [Validators.required, Validators.minLength(3), Validators.maxLength(10)],
+        asyncValidators: [this.validateProductId.bind(this)],
+        updateOn: 'blur'
+      }],
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       description: [ '', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       logo: ['', Validators.required],
-      releaseDate: ['', [Validators.required, this.validateReleaseDate.bind(this)]],
-      reviewDate: ['', [Validators.required, this.validateReviewDate.bind(this)]]
+      date_release: ['', [Validators.required, this.validateReleaseDate.bind(this)]],
+      date_revision: ['', [Validators.required, this.validateReviewDate.bind(this)]]
     });
+  }
+
+
+  private validateProductId(control: AbstractControl): Observable<ValidationErrors | null> {
+    const id = control.value;
+    return this.productList.verifyProductId(id).pipe(
+      map((exists: boolean) => (exists ? { productIdExists: true } : null)),
+      catchError(() => of(null))
+    );
   }
 }

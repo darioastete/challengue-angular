@@ -47,8 +47,21 @@ export class AppComponent {
     this.products = this.products.slice(0, this.recordsPerPage);
   }
 
-  onAddProduct(event:any){
-    console.log(event);
+  onAddProduct(product:Product){
+    console.log('',product);
+    this.productListService.createProduct(product).subscribe({
+      next(value) {
+          console.log(value);
 
+      },
+      error(err) {
+          console.log(err);
+
+      },
+      complete() {
+          console.log('complete');
+
+      },
+    })
   }
 }
