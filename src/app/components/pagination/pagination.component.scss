@@ -1,0 +1,31 @@
+.wrap-results {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom: 1rem;
+  font-family: 'roboto-regular';
+  p {
+
+    font-size: small;
+  }
+
+  select {
+    padding: 3px 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 8%;
+    text-align: center;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #8fb3fc;
+  }
+  select option {
+    padding: 8px;
+  }
+}

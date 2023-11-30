@@ -1,4 +1,6 @@
-<p>{{ resultsCount }} resultados</p>
-<select (change)="onRecordsPerPageChange($event)">
-  <option *ngFor="let option of availableRecordsPerPage" [value]="option">{{ option }}</option>
-</select>
+<div class="wrap-results">
+  <p>{{ resultsCount }} resultados</p>
+  <select (change)="onRecordsPerPageChange($event)">
+    <option *ngFor="let option of availableRecordsPerPage" [value]="option">{{ option }}</option>
+  </select>
+</div>
