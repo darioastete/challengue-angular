@@ -1,6 +1,6 @@
 # Challengue
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17 & Jest 29
 
 ## Development server
 
@@ -16,11 +16,16 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` Este comando ejecutará las pruebas unitarias a través de Karma. Asegúrate de que la aplicación esté configurada correctamente para las pruebas unitarias y sigue la salida en la consola para obtener información sobre el estado de las pruebas. Puedes utilizar ng test con varias opciones para personalizar la ejecución de las pruebas según tus necesidades.
 
-## Running end-to-end tests
+## Running unit tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng test:watch` Si deseas ejecutar las pruebas en modo de observación para que se vuelvan a ejecutar automáticamente cuando cambien los archivos.
+
+
+## Running unit tests
+
+Run `ng test:coverage` Si deseas generar un informe de cobertura para evaluar la calidad de las pruebas.
 
 ## Further help
 
