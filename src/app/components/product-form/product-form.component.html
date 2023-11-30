@@ -1,24 +1,35 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form">
   <div class="input-container">
-    <label for="id">Id:</label>
-    <input type="text" id="id" formControlName="id" [readonly]="initialValues"/>
-    <div *ngIf="shouldShowError('id', 'required')">
+    <label for="id" class="input-container__label" >ID:</label>
+    <input type="text" id="id" class="input-container__input" [ngClass]="{'input-invalid': productForm.get('id')?.invalid && (productForm.get('id')?.dirty || productForm.get('id')?.touched)}" formControlName="id" [readonly]="initialValues"/>
+    <div *ngIf="shouldShowError('id', 'required')" class="input-container__message">
       El Id es requerido.
     </div>
-    <div *ngIf="shouldShowError('id', 'minlength') || shouldShowError('id', 'maxlength')">
+    <div *ngIf="shouldShowError('id', 'minlength') || shouldShowError('id', 'maxlength')" class="input-container__message">
       El Id debe tener entre 3 y 10 caracteres.
     </div>
-    <div *ngIf="shouldShowError('id', 'productIdExists')">
+    <div *ngIf="shouldShowError('id', 'productIdExists')" class="input-container__message">
       El id ya existe.
     </div>
+  </div>
 
+  <div class="input-container">
+    <label for="name" class="input-container__label" >Nombre:</label>
+    <input type="text" id="name" class="input-container__input" formControlName="name"
+    [ngClass]="{'input-invalid': productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)}"/>
+    <div *ngIf="shouldShowError('name', 'required')" class="input-container__message">
+      El nombre es requerido.
+    </div>
+    <div *ngIf="shouldShowError('name', 'minlength') || shouldShowError('name', 'maxlength')" class="input-container__message">
+      El nombre debe tener entre 3 y 10 caracteres.
+    </div>
   </div>
 
   <div class="input-container">
     <label for="description" class="input-container__label">Descripción:</label>
-    <textarea id="description" formControlName="description" class="input-container__input"></textarea>
-
-    <span *ngIf="shouldShowError('description', 'required')" class="input-container__message">
+    <textarea id="description" class="input-container__text-area" formControlName="description"
+    [ngClass]="{'input-invalid': productForm.get('description')?.invalid && (productForm.get('description')?.dirty || productForm.get('description')?.touched)}"></textarea>
+    <span *ngIf="shouldShowError('description', 'required')"  class="input-container__message">
       La descripción es requerida.
     </span>
 
@@ -29,47 +40,42 @@
   </div>
 
   <div class="input-container">
-    <label for="description" class="input-container__label">Descripción:</label>
-    <textarea id="description" formControlName="description" class="input-container__input"></textarea>
-    <div *ngIf="shouldShowError('description', 'required')">
-      La descripción es requerida.
-    </div>
-    <div *ngIf="shouldShowError('description', 'minlength') || shouldShowError('description', 'maxlength')">
-      La descripción debe tener entre 10 y 200 caracteres.
-    </div>
-  </div>
-
-  <div class="input-container">
-    <label for="logo">Logo:</label>
-    <input type="text" id="logo" formControlName="logo" />
-    <div *ngIf="shouldShowError('logo', 'required')">
+    <label for="logo" class="input-container__label">Logo:</label>
+    <input type="text" id="logo" class="input-container__input" formControlName="logo"
+    [ngClass]="{'input-invalid': productForm.get('logo')?.invalid && (productForm.get('logo')?.dirty || productForm.get('logo')?.touched)}"
+    />
+    <div *ngIf="shouldShowError('logo', 'required')" class="input-container__message">
       El logo es requerido.
     </div>
   </div>
 
   <div class="input-container">
-    <label for="date_release">Fecha de Liberación:</label>
-    <input type="date" id="date_release" formControlName="date_release" />
-    <div *ngIf="shouldShowError('date_release', 'required')">
+    <label for="date_release" class="input-container__label">Fecha de Liberación:</label>
+    <input type="date" id="date_release" class="input-container__input" formControlName="date_release"
+    [ngClass]="{'input-invalid': productForm.get('date_release')?.invalid && (productForm.get('date_release')?.dirty || productForm.get('date_release')?.touched)}"
+    />
+    <div *ngIf="shouldShowError('date_release', 'required')" class="input-container__message">
       La Fecha de Liberación es requerida.
     </div>
-    <div *ngIf="shouldShowError('date_release', 'invalidReleaseDate')">
+    <div *ngIf="shouldShowError('date_release', 'invalidReleaseDate')" class="input-container__message">
       La Fecha de Liberación debe ser igual o mayor a la fecha actual.
     </div>
   </div>
 
   <div class="input-container">
-    <label for="date_revision">Fecha de Revisión:</label>
-    <input type="date" id="reviewDate" formControlName="date_revision" />
-    <div *ngIf="shouldShowError('date_revision', 'required')">
+    <label for="date_revision" class="input-container__label">Fecha de Revisión:</label>
+    <input type="date" id="date_revision" class="input-container__input" formControlName="date_revision"
+    [ngClass]="{'input-invalid': productForm.get('date_revision')?.invalid && (productForm.get('date_revision')?.dirty || productForm.get('date_revision')?.touched)}"
+    />
+    <div *ngIf="shouldShowError('date_revision', 'required')" class="input-container__message">
       La Fecha de Revisión es requerida.
     </div>
-    <div *ngIf="shouldShowError('date_revision', 'invalidReviewDate')">
+    <div *ngIf="shouldShowError('date_revision', 'invalidReviewDate')" class="input-container__message">
       La Fecha de Revisión debe ser exactamente un año posterior a la fecha de liberación.
     </div>
   </div>
   <div class="wrap-btn">
-    <button type="button" *ngIf="!initialValues" [disabled]="!canResetForm()" (click)="resetForm()">Reiniciar</button>
-    <button type="submit" [disabled]="!productForm.valid">Enviar</button>
+    <button type="button" class="btn btn-secondary" *ngIf="!initialValues" [disabled]="!canResetForm()" (click)="resetForm()">Reiniciar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Enviar</button>
   </div>
 </form>

@@ -16,6 +16,7 @@ import { ListProductComponent } from './pages/list-product/list-product.componen
 import { DatePipe } from '@angular/common';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { ModalConfirmationComponent } from './components/modal-confirmation/modal-confirmation.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ModalConfirmationComponent } from './components/modal-confirmation/moda
     EditProductComponent,
     ListProductComponent,
     CustomDatePipe,
-    ModalConfirmationComponent
+    ModalConfirmationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

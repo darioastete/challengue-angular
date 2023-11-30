@@ -1,26 +1,48 @@
 .form {
-  // display: flex;
   gap: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 0 50px;
+  min-height: 50vh;
+  margin: 3% 5% 5% 5%;
 }
 .input-container {
   display: flex;
   flex-direction: column;
-  width:  40%;
+  width:  48%;
   gap: 10px;
 
-  &__input {
+  &__input,
+  &__text-area {
     border-radius: 7px;
-    padding: 10px 5px 0;
+    padding: 13px 8px;
+    border: 1px solid #c0c0c0;
+    height: 25px;
+    font-family: 'roboto-light';
   }
+
+  &__input:focus,
+  &__text-area:focus {
+    outline: none;
+    border: 1px solid #c1c8da;
+    box-shadow: 0 0 5px #c1c8da;
+  }
+
+  .input-invalid {
+    border: 1px solid #ff0000;
+    color: #ff0000 !important;
+  }
+
   &__label {
    font-weight: bold;
+   font-family: 'roboto-regular';
+   font-size: 0.8rem;
   }
   &__message {
     color: red;
+    font-family: 'roboto-regular';
+    font-size: .8rem;
   }
 
 }
@@ -30,6 +52,30 @@
   display: flex;
   justify-content:center;
   align-items: center;
-  gap: 50px;
+  gap: 3rem;
   margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  padding: 1.3rem 2.5rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-family: 'roboto-regular';
+
+}
+
+.btn:disabled{
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background-color: #f9dc54;
+  color: #1f2650;
+}
+
+.btn-secondary {
+  background-color: #c1c8da;
+  color: #1f2650;
 }
