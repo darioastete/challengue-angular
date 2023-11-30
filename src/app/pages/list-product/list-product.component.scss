@@ -1,0 +1,38 @@
+.container {
+  .list-products {
+    background-color: white;
+    padding: 2%;
+  }
+
+  .actions {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom: 1rem;
+    .btn {
+      padding: 1.3rem 2.5rem;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      font-family: 'roboto-regular';
+
+    }
+
+    .btn:disabled{
+      opacity: 0.5;
+    }
+
+    .btn-primary {
+      background-color: #f9dc54;
+      color: #1f2650;
+    }
+
+    .btn-primary:focus {
+      cursor: pointer !important;
+      background-color: #e4c023 !important;
+    }
+  }
+
+
+}

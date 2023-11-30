@@ -1,6 +1,40 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  thead {
+    tr{
+      th {
+        border-bottom: 1px solid #c1c8dadc;
+        font-family: 'roboto-regular';
+        background-color: #F9FAFC;
+        font-size: .8rem;
+        text-align: center;
+        height: 2.5rem;
+        color: rgba(0, 0, 0, 0.774);
+      }
+    }
+  }
+  tbody {
+    tr {
+      td:first-child {
+        text-align: center;
+      }
+      td {
+        // border: 1px solid red;
+        border-bottom: 1px solid #c1c8dadc;
+        padding-left: 1rem;
+        font-family: 'roboto-regular';
+        font-size: .8rem;
+        .img-logo {
+          text-align: center;
+          width: 3rem;
+          height: 2.8rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
 }
 
 th, td {
@@ -8,11 +42,14 @@ th, td {
   text-align: left;
 }
 
-th {
-  background-color: #4CAF50;
-  color: white;
-}
+// th {
+//   background-color: #4CAF50;
+//   color: white;
+// }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+// tr:nth-child(even) {
+//   background-color: #f2f2f2;
+// }
+
+
+

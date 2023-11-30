@@ -1,0 +1,14 @@
+.input-search {
+  border-radius: 7px;
+  padding: 13px 8px;
+  border: 1px solid #c0c0c0;
+  height: 15px;
+  width: 100%;
+  font-family: 'roboto-light';
+}
+
+.input-search:focus{
+  outline: none;
+  border: 1px solid #c1c8da;
+  box-shadow: 0 0 5px #c1c8da;
+}
