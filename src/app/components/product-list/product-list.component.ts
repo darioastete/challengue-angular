@@ -11,6 +11,9 @@ import { ModalConfirmationService } from '../../services/modal-confirmation.serv
 export class ProductListComponent {
   @Input() products: Product[] = [];
 
+  isDropdownOpen:Boolean = false;
+  activeProduct: any;
+
   constructor(private router:Router,
     private modalService :ModalConfirmationService){}
 
@@ -30,5 +33,9 @@ export class ProductListComponent {
     this.router.navigate(['/edit-product', product.id], navigationExtras);
   };
 
-
+  toggleDropdown(event: MouseEvent, product: any) {
+    event.stopPropagation();
+    this.isDropdownOpen = !this.isDropdownOpen;
+    this.activeProduct = product
+  }
 }

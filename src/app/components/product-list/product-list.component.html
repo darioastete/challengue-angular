@@ -17,8 +17,17 @@
       <td>{{ product.date_release | customDate}}</td>
       <td>{{ product.date_revision | customDate}}</td>
       <td>
-        <button type="button" (click)="delete(product.id)">delete</button>
-        <button type="button" (click)="edit(product)">edit</button>
+        <div class="dropdown" [class.open]="product === activeProduct" (click)="toggleDropdown($event, product)">
+          <button type="button" class="btn-dropdown">
+            <span>::</span>
+            <div class="dropdown-toggle">
+            </div>
+          </button>
+          <ul *ngIf="isDropdownOpen" class="dropdown-menu">
+            <li (click)="edit(product)">Editar</li>
+            <li (click)="delete(product.id)">Eliminar</li>
+          </ul>
+        </div>
       </td>
     </tr>
   </tbody>
