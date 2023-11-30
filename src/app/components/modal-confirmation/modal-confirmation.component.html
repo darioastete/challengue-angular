@@ -1,11 +1,12 @@
 <div class="modal-overlay" *ngIf="isModalOpen | async">
   <div class="modal">
     <div class="modal-content">
-      <h2>Eliminar Producto</h2>
-      <p>¿Estás seguro de que deseas eliminar este producto?</p>
+      <div class="modal-body">
+        <p>¿Estás seguro de que deseas eliminar este producto?</p>
+      </div>
       <div class="modal-actions">
-        <button (click)="cancel()">Cancelar</button>
-        <button (click)="deleteProduct()">Eliminar</button>
+        <button class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+        <button class="btn btn-primary" (click)="deleteProduct()">Confirmar</button>
       </div>
     </div>
   </div>

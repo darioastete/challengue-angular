@@ -14,19 +14,60 @@
 
 .modal {
   background: white;
-  padding: 20px;
   border-radius: 8px;
 }
 
 .modal-content {
-  text-align: center;
+
+  .modal-body {
+    text-align: left;
+    padding: 35px;
+    h2 {
+      font-family: 'roboto-regular';
+      padding-bottom: 2rem;
+    }
+    p{
+      font-family: 'roboto-regular';
+    }
+  }
 }
 
 .modal-actions {
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.253);
   margin-top: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 button {
   margin: 0 10px;
+}
+
+
+.btn {
+  padding: 1.2rem 3.5rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-family: 'roboto-regular';
+}
+.btn:hover {
+  cursor: pointer;
+  opacity: 1.5;
+}
+
+.btn:disabled{
+  opacity: 0.5;
+}
+
+.btn-primary {
+  background-color: #f9dc54;
+  color: #1f2650;
+}
+
+.btn-secondary {
+  background-color: #c1c8da;
+  color: #1f2650;
 }
 
